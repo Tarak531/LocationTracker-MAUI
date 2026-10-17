@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="LocationTracker.MainPage"
+             Title="Location Tracker" BackgroundColor="#F5F3FA">
+    <Grid RowDefinitions="Auto,*,Auto" RowSpacing="0">
+        <VerticalStackLayout Grid.Row="0" BackgroundColor="#4F29CF" Padding="16,14" Spacing="5">
+            <Label Text="Location Tracker" FontSize="22" FontAttributes="Bold" TextColor="White" />
+            <Label x:Name="StatusLabel" Text="Ready — press Start" FontSize="13" TextColor="#E6DCFF" />
+        </VerticalStackLayout>
+        <maps:Map Grid.Row="1" x:Name="TrackingMap" MapType="Street" IsShowingUser="True" />
+        <VerticalStackLayout Grid.Row="2" Padding="12" Spacing="10" BackgroundColor="White">
+            <Label x:Name="CountLabel" Text="0 saved locations" FontSize="13" TextColor="#493C65" />
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                <Button Grid.Column="0" x:Name="StartButton" Text="Start" Clicked="OnStartClicked" BackgroundColor="#4F29CF" TextColor="White" />
+                <Button Grid.Column="1" x:Name="StopButton" Text="Stop" Clicked="OnStopClicked" BackgroundColor="#4F29CF" TextColor="White" IsEnabled="False" />
+                <Button Grid.Column="2" Text="Clear" Clicked="OnClearClicked" BackgroundColor="#E8E2F7" TextColor="#35216D" />
+            </Grid>
+            <HorizontalStackLayout Spacing="12">
+                <Label Text="Density overlay" VerticalOptions="Center" TextColor="#35216D" />
+                <Switch x:Name="HeatSwitch" IsToggled="True" Toggled="OnHeatToggled" OnColor="#4F29CF" />
+                <Label Text="Blue pins = route" FontSize="12" VerticalOptions="Center" TextColor="#665D77" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
